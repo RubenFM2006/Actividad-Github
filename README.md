@@ -15,3 +15,5 @@ El archivo **supervivencia.txt** tiene una estructura con factores como genotipo
 ##Resultado
 La tasa de riesgo calculada ha sido obtenida mediante la modelización de un modelo de regresión de Andersen y Gill, el modelo generado será util para realizar la gráfica de tasas de riesgo por factor obteniendo como resultados que el ácido ascorbico y el sorbitol a 20 g/L aumenta la viabilidad de explantes.
 ![alt text](prueba.png)
+
+En la gráfica se observa una disminución de la tasa de riesgo para los medios con 100 ppm de ácido ascórbico con un p-valor inferior al 0.01, una concentración de sorbitol de 20 g/L con un p-valor inferior al 0.01 y considerar que todos los genotipos tienen mayor riesgo que el MU51 con p-valores inferiores a 0.05.
