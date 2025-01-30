@@ -1,3 +1,5 @@
+Data/supervivencia.txt
+
 Genotype	Treatment	Sucrose	Sorbitol	Ascorbic_Acid	futime	fustat
 MU51	1	20	0	0	240	1
 MU51	1	20	0	0	330	1
