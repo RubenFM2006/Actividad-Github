@@ -8,18 +8,10 @@ library(ggplot2)
 supervivencia<-read.table("C:/Users/Ruben/Desktop/Tesis/Resultados Tesis/supervivencia/supervivencia.txt", header=T, sep='\t')
 
 ##Definir los factores del experimento en nuestros datos
-supervivencia$Genotype<-factor(supervivencia$Genotype,
-                            levels=c("MU51","MU55","MU59","MU79"),
-                           labels=c("MU51","MU55","MU59","MU79"))
-supervivencia$Sucrose<-factor(supervivencia$Sucrose,
-                            levels=c("20","40"),
-                            labels=c("20","40"))
-supervivencia$Sorbitol<-factor(supervivencia$Sorbitol,
-                              levels=c("0","20","40"),
-                              labels=c("0","20","40"))
-supervivencia$Ascorbic_Acid<-factor(supervivencia$Ascorbic_Acid,
-                              levels=c("0","100"),
-                              labels=c("0","100"))
+supervivencia$Genotype<-as.factor(supervivencia$Genotype)
+supervivencia$Sucrose<-as.factor(supervivencia$Sucrose)
+supervivencia$Sorbitol<-as.factor(supervivencia$Sorbitol)
+supervivencia$Ascorbic_Acid<-as.factor(supervivencia$Ascorbic_Acid)
 
 ##Generar la tabla de datos de supervivencia
 surv_object <- Surv(time = supervivencia$futime, event = supervivencia$fustat)
