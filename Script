@@ -1,0 +1,34 @@
+##Cargar los paquetes del R
+library(survival)
+library(survminer)
+library(dplyr)
+library(ggplot2)
+
+##Cargar los datos de expresión de genes
+supervivencia<-read.table("C:/Users/Ruben/Desktop/Tesis/Resultados Tesis/supervivencia/supervivencia.txt", header=T, sep='\t')
+
+##Definir los factores del experimento en nuestros datos
+supervivencia$Genotype<-factor(supervivencia$Genotype,
+                            levels=c("MU51","MU55","MU59","MU79"),
+                           labels=c("MU51","MU55","MU59","MU79"))
+supervivencia$Sucrose<-factor(supervivencia$Sucrose,
+                            levels=c("20","40"),
+                            labels=c("20","40"))
+supervivencia$Sorbitol<-factor(supervivencia$Sorbitol,
+                              levels=c("0","20","40"),
+                              labels=c("0","20","40"))
+supervivencia$Ascorbic_Acid<-factor(supervivencia$Ascorbic_Acid,
+                              levels=c("0","100"),
+                              labels=c("0","100"))
+
+##Generar la tabla de datos de supervivencia
+surv_object <- Surv(time = supervivencia$futime, event = supervivencia$fustat)
+surv_object
+
+##Generar el modelo fit.coxph en base a los 3 factores
+fit.coxph <- coxph(surv_object ~ Genotype + Sucrose + Sorbitol + Ascorbic_Acid, 
+                   data = supervivencia)
+##Definir la gráfica a obtener
+tiff('prueba.tiff', units="in", width=7, height=7, res=2000, compression = 'lzw')
+ggforest(fit.coxph, data = supervivencia)
+dev.off()
